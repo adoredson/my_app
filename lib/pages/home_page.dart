@@ -5,6 +5,31 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Welcome to Home Page'));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('The Cenacle'),
+        centerTitle: true,
+        leading: const Icon(Icons.home),
+        bottom: const TabBar(
+          indicatorColor: Color.fromARGB(255, 5, 112, 87),
+          labelColor: Color.fromARGB(255, 8, 104, 81),
+          unselectedLabelColor: Colors.grey,
+          tabs: [
+            Tab(text: 'Live'),
+            Tab(text: 'Help'),
+            Tab(text: 'Books'),
+            Tab(text: 'Partners'),
+          ],
+        ),
+      ),
+      body: const TabBarView(
+        children: [
+          Center(child: Text('Live Page')),
+          Center(child: Text('Help Page')),
+          Center(child: Text('Books Page')),
+          Center(child: Text('Partners Page')),
+        ],
+      ),
+    );
   }
 }

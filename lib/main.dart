@@ -13,16 +13,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'The Cenacle',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.teal,
-          brightness: Brightness.dark,
+    return DefaultTabController(
+      length: 4, // For top tabs in HomePage
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 6, 82, 74),
+            brightness: Brightness.dark,
+          ),
         ),
+        home: const MainScreen(),
       ),
-      home: const MainScreen(),
     );
   }
 }
@@ -38,13 +40,11 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const HomePage(),
-    const CommunityPage(),
-    const DevotionPage(),
-    const ProfilePage(),
+    HomePage(),
+    CommunityPage(),
+    DevotionPage(),
+    ProfilePage(),
   ];
-
-  final List<String> _titles = ['Home', 'Community', 'Devotion', 'Profile'];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -55,18 +55,19 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_titles[_selectedIndex]), centerTitle: true),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
         selectedItemColor: Colors.tealAccent,
         unselectedItemColor: Colors.grey,
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Community'),
-          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Devotion'),
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Community'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu_book),
+            label: 'Devotion',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
       ),
