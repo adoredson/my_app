@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'pages/home_page.dart';
 import 'pages/community.dart';
-import 'pages/testimony.dart';
 import 'pages/devotion.dart';
-import 'pages/my_Profile.dart';
+import 'pages/my_profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,26 +38,19 @@ class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    HomePage(),
-    CommunityPage(),
-    TestimonyPage(),
-    DevotionPage(),
-    ProfilePage(),
+    const HomePage(),
+    const CommunityPage(),
+    const DevotionPage(),
+    const ProfilePage(),
   ];
+
+  final List<String> _titles = ['Home', 'Community', 'Devotion', 'Profile'];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
   }
-
-  final List<String> _titles = [
-    'Home',
-    'Community',
-    'Testimony',
-    'Devotion',
-    'Profile',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -74,10 +66,6 @@ class _MainScreenState extends State<MainScreen> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Community'),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.record_voice_over),
-            label: 'Testimony',
-          ),
           BottomNavigationBarItem(icon: Icon(Icons.book), label: 'Devotion'),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
